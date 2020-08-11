@@ -18,6 +18,10 @@ export const navigation = css`
       color: ${lightTwitchColor};
     }
   }
+
+  img {
+    width: 10rem;
+  }
 `;
 
 export const item = css``;
