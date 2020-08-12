@@ -10,7 +10,7 @@ export const fetchGames = () => async (dispatch) => {
       },
     }
   );
+
   const json = await response.json();
-  console.log(json.top);
   dispatch({ type: FETCH_GAMES, payload: json.top });
 };

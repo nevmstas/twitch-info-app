@@ -1,9 +1,11 @@
 import { FETCH_GAMES } from "./types";
-const initialState = {
+import { GamesState } from "../inertfaces";
+
+const initialState: GamesState = {
   games: [],
 };
 
-export const twitchGamesReducer = (state = initialState, action) => {
+export const twitchGamesReducer = (state = initialState, action: any) => {
   switch (action.type) {
     case FETCH_GAMES:
       return {
