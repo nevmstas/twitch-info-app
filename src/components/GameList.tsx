@@ -29,7 +29,7 @@ export const GameList = () => {
           <Card
             css={cardItem}
             key={index}
-            img={g.game.box.medium}
+            img={g.game.box.large}
             viewers={g.viewers}
             name={g.game.name}
           />

@@ -1,9 +1,21 @@
 // this comment tells babel to convert jsx to calls to a function called jsx instead of React.createElement
 /** @jsx jsx */
-import { jsx, Global, css } from "@emotion/core";
+import { jsx, css } from "@emotion/core";
+import { twitchColor, lightTwitchColor } from "../styles/colors";
 
 import React from "react";
-const cardStyle = css``;
+
+export const cardItem = css`
+  width: 280px;
+  padding: 1rem;
+  color: white;
+  font-size: 2rem;
+  margin: 2rem;
+  text-align: center;
+`;
+const cardImg = css`
+  margin-bottom: 20px;
+`;
 
 type PropsType = {
   img: string;
@@ -11,12 +23,20 @@ type PropsType = {
   name: string;
 };
 
+function kFormatter(num: number) {
+  return Math.abs(num) > 999
+    ? Math.sign(num) * +(Math.abs(num) / 1000).toFixed(1) + "K"
+    : Math.sign(num) * Math.abs(num);
+}
+
 export const Card: React.FC<PropsType> = ({ img, viewers, name }) => {
   return (
-    <div css={cardStyle}>
-      <div>{name}</div>
-      <img src={img}></img>
-      <div>{viewers}</div>
+    <div css={cardItem}>
+      <img css={cardImg} alt={name} src={img} />
+      <h4>
+        <b>{name}</b>
+      </h4>
+      <p>{kFormatter(viewers)} viewers</p>
     </div>
   );
 };

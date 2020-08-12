@@ -15,9 +15,9 @@ function App() {
   return (
     <React.Fragment>
       <Global styles={global} />
-      <header css={header}>Twitch info</header>
+      {/* <header css={header}>Twitch info</header> */}
+      <Navigation />
       <div css={page}>
-        <Navigation />
         <main css={main}>
           <GameList />
         </main>

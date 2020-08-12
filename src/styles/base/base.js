@@ -22,4 +22,10 @@ export const global = css`
 
 export const page = css`
   display: flex;
+  margin-left: 300px;
+
+  @media screen and (max-width: 1200px) {
+    justify-content: center;
+    margin-left: 0;
+  }
 `;
