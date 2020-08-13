@@ -2,6 +2,8 @@
 /** @jsx jsx */
 import { jsx, css } from "@emotion/core";
 import React from "react";
+
+import { Link } from "react-router-dom";
 import { navigation } from "../../styles/layout/navigation";
 
 export const Navigation = () => {
@@ -12,16 +14,16 @@ export const Navigation = () => {
       </div>
       <ul>
         <li>
-          <a href="#">Home</a>
+          <Link to="/">Home</Link>
         </li>
         <li>
-          <a href="#">Charts</a>
+          <Link to="/charts">Charts</Link>
         </li>
         <li>
-          <a href="#">Contacts</a>
+          <Link to="/contacts">Contacts</Link>
         </li>
         <li>
-          <a href="#">About</a>
+          <Link to="/about">About</Link>
         </li>
       </ul>
     </nav>

@@ -3,6 +3,8 @@
 import { jsx, Global, css } from "@emotion/core";
 import React from "react";
 
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+
 import "./App.css";
 
 import { global, page } from "./styles/base/base";
@@ -10,19 +12,27 @@ import { header } from "./styles/layout/header";
 import { main } from "./styles/layout/main";
 
 import { GameList } from "./components/GameList";
+import { ChartStats } from "./components/ChartStats";
 import { Navigation } from "./components/navbar/Navigation";
 function App() {
   return (
-    <React.Fragment>
+    <Router>
       <Global styles={global} />
       {/* <header css={header}>Twitch info</header> */}
       <Navigation />
       <div css={page}>
         <main css={main}>
-          <GameList />
+          <Switch>
+            <Route path="/" exact component={GameList}>
+              <GameList />
+            </Route>
+            <Route path="/charts">
+              <ChartStats />
+            </Route>
+          </Switch>
         </main>
       </div>
-    </React.Fragment>
+    </Router>
   );
 }
 

@@ -13,8 +13,10 @@ export const cardItem = css`
   margin: 2rem;
   text-align: center;
 `;
+
 const cardImg = css`
   margin-bottom: 20px;
+  box-shadow: 0 0 10px black;
 `;
 
 type PropsType = {
