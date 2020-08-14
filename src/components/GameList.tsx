@@ -10,17 +10,16 @@ import { cardsContainer, cardItem } from "../styles/GameList/gameList";
 import { GamesState, GameCardType } from "../inertfaces";
 import { RootState } from "../redux/rootReducer";
 
-export const GameList = () => {
+type PropsTypes = {
+  games: Array<GameCardType>;
+};
+export const GameList: React.FC<PropsTypes> = ({ games }) => {
   const dispatch = useDispatch();
-  const games = useSelector((state: RootState) => state.twitchGames.games);
+  //const games = useSelector((state: RootState) => state.twitchGames.games);
 
   const handleClick = () => {
     dispatch(fetchGames());
   };
-
-  useEffect(() => {
-    dispatch(fetchGames());
-  }, []);
 
   return (
     <div css={cardsContainer}>

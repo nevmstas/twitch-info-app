@@ -1,5 +1,13 @@
 import React from "react";
-
-export const ChartStats = () => {
-  return <div>charts</div>;
+import { ViewersChart } from "./charts/ViewersChart";
+import { GamesState, GameCardType } from "../inertfaces";
+type PropsTypes = {
+  games: Array<GameCardType>;
+};
+export const ChartStats: React.FC<PropsTypes> = ({ games }) => {
+  return (
+    <div>
+      <ViewersChart games={games} />
+    </div>
+  );
 };

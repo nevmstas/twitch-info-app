@@ -22,6 +22,8 @@ export const navigation = css`
   }
 
   a {
+    margin-left: 20px;
+    margin-top: 20px;
     display: block;
     text-decoration: none;
     color: white;

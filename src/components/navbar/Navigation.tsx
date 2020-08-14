@@ -9,9 +9,9 @@ import { navigation } from "../../styles/layout/navigation";
 export const Navigation = () => {
   return (
     <nav css={navigation}>
-      <div>
+      {/* <div>
         <img src="https://cdn0.iconfinder.com/data/icons/social-network-7/50/16-512.png"></img>
-      </div>
+      </div> */}
       <ul>
         <li>
           <Link to="/">Home</Link>
