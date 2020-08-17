@@ -40,7 +40,7 @@ function App() {
               <GameList games={games} />
             </Route>
             <Route path="/charts">
-              <ChartStats games={games} />
+              <ChartStats />
             </Route>
           </Switch>
         </main>

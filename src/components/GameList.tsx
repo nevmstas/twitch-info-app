@@ -14,13 +14,6 @@ type PropsTypes = {
   games: Array<GameCardType>;
 };
 export const GameList: React.FC<PropsTypes> = ({ games }) => {
-  const dispatch = useDispatch();
-  //const games = useSelector((state: RootState) => state.twitchGames.games);
-
-  const handleClick = () => {
-    dispatch(fetchGames());
-  };
-
   return (
     <div css={cardsContainer}>
       {games &&

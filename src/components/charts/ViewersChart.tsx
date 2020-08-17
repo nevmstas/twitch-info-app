@@ -1,4 +1,8 @@
-import React, { useEffect, useState } from "react";
+// this comment tells babel to convert jsx to calls to a function called jsx instead of React.createElement
+/** @jsx jsx */
+import { jsx, Global, css } from "@emotion/core";
+import React, { useState, useEffect } from "react";
+
 import {
   BarChart,
   Bar,
@@ -9,48 +13,58 @@ import {
   Tooltip,
   Legend,
 } from "recharts";
-import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "../../redux/rootReducer";
-import { GamesState, GameCardType } from "../../inertfaces";
-import { fetchGames } from "../../redux/actions";
 
-type chartDate = {
+import { GameCardType } from "../../inertfaces";
+
+import { ChartContainer } from "../../styles/charts/chartContainer";
+
+type chartData = {
   name: string;
-  pv: number;
+  viewers: number;
 };
+
 type PropsTypes = {
   games: Array<GameCardType>;
 };
-export const ViewersChart: React.FC<PropsTypes> = ({ games }) => {
-  const newData = [];
 
-  for (let i = 0; i <= 5; i++) {
-    const obj = {
-      name: games[i].game.name,
-      pv: games[i].viewers,
-    };
-    newData.push(obj);
-  }
+export const ViewersChart: React.FC<PropsTypes> = ({ games }) => {
+  const [chartData, setChartData] = useState<Array<chartData>>([]);
+
+  //const newData = [];
+  useEffect(() => {
+    const newArray = [];
+    for (let i = 0; i <= 5; i++) {
+      const obj = {
+        name: games[i].game.name,
+        viewers: games[i].viewers,
+      };
+      console.log(obj);
+      newArray.push(obj);
+    }
+    setChartData(newArray);
+  }, [games]);
 
   return (
-    <BarChart
-      width={1000}
-      height={300}
-      data={newData}
-      margin={{
-        top: 5,
-        right: 30,
-        left: 20,
-        bottom: 5,
-      }}
-      barSize={20}
-    >
-      <XAxis dataKey="name" scale="point" padding={{ left: 10, right: 10 }} />
-      <YAxis />
-      <Tooltip />
-      <Legend />
-      <CartesianGrid strokeDasharray="3 3" />
-      <Bar dataKey="pv" fill="#8884d8" background={{ fill: "#eee" }} />
-    </BarChart>
+    <div>
+      <BarChart
+        width={1000}
+        height={300}
+        data={chartData}
+        margin={{
+          top: 5,
+          right: 30,
+          left: 20,
+          bottom: 5,
+        }}
+        barSize={20}
+      >
+        <XAxis dataKey="name" scale="point" padding={{ left: 10, right: 10 }} />
+        <YAxis />
+        <Tooltip />
+        <Legend />
+        <CartesianGrid strokeDasharray="3 3" />
+        <Bar dataKey="viewers" fill="#8884d8" background={{ fill: "#eee" }} />
+      </BarChart>
+    </div>
   );
 };
