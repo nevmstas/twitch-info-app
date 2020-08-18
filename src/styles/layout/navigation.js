@@ -29,7 +29,9 @@ export const navigation = css`
     color: white;
     transition: all 0.2s;
     &:hover {
-      color: ${lightTwitchColor};
+      /* color: ${lightTwitchColor}; */
+      transform: translateX(10px);
+      text-decoration-line: 1px;
     }
   }
 

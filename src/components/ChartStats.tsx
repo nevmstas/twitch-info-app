@@ -5,6 +5,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { ViewersChart } from "./charts/ViewersChart";
+import { ChannelChart } from "./charts/ChannelChart";
 import { GamesState, GameCardType } from "../inertfaces";
 import { fetchGames } from "../redux/actions";
 
@@ -28,7 +29,8 @@ export const ChartStats = () => {
 
   return (
     <div css={ChartContainer}>
-      {isLoading ? <Loader /> : <ViewersChart games={games} />}
+      <ViewersChart games={games} />
+      <ChannelChart games={games} />
     </div>
   );
 };

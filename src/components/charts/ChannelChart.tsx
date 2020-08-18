@@ -20,14 +20,14 @@ import { ChartContainer, Headling } from "../../styles/charts/chartContainer";
 
 type chartData = {
   name: string;
-  viewers: number;
+  channels: number;
 };
 
 type PropsTypes = {
   games: Array<GameCardType>;
 };
 
-export const ViewersChart: React.FC<PropsTypes> = ({ games }) => {
+export const ChannelChart: React.FC<PropsTypes> = ({ games }) => {
   const [chartData, setChartData] = useState<Array<chartData>>([]);
 
   //const newData = [];
@@ -36,7 +36,7 @@ export const ViewersChart: React.FC<PropsTypes> = ({ games }) => {
     for (let i = 0; i <= 5; i++) {
       const obj = {
         name: games[i].game.name,
-        viewers: games[i].viewers,
+        channels: games[i].channels,
       };
       console.log(obj);
       newArray.push(obj);
@@ -45,8 +45,8 @@ export const ViewersChart: React.FC<PropsTypes> = ({ games }) => {
   }, [games]);
 
   return (
-    <div css={ChartContainer}>
-      <h1 css={Headling}>Viewers chart</h1>
+    <div>
+      <h1 css={Headling}>Channel chart</h1>
       <BarChart
         width={1000}
         height={300}
@@ -64,7 +64,7 @@ export const ViewersChart: React.FC<PropsTypes> = ({ games }) => {
         <Tooltip />
         <Legend />
         <CartesianGrid strokeDasharray="3 3" />
-        <Bar dataKey="viewers" fill="#8884d8" background={{ fill: "#eee" }} />
+        <Bar dataKey="channels" fill="#8884d8" background={{ fill: "#eee" }} />
       </BarChart>
     </div>
   );
