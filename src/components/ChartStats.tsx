@@ -3,15 +3,13 @@
 import { jsx, Global, css } from "@emotion/core";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-
 import { ViewersChart } from "./charts/ViewersChart";
 import { ChannelChart } from "./charts/ChannelChart";
 import { GamesState, GameCardType } from "../inertfaces";
-import { fetchGames } from "../redux/actions";
-
 import { RootState } from "../redux/rootReducer";
 import { Loader } from "./loader/Loader";
 import { ChartContainer } from "../styles/charts/chartContainer";
+import { FETCH_GAMES } from "../redux/types";
 
 type PropsTypes = {
   games: Array<GameCardType>;
@@ -23,14 +21,19 @@ export const ChartStats = () => {
   const isLoading = useSelector((state: RootState) => state.app.isLoading);
 
   useEffect(() => {
-    dispatch(fetchGames());
-    console.log(games);
-  }, []);
+    dispatch({ type: FETCH_GAMES });
+  }, [dispatch]);
 
   return (
     <div css={ChartContainer}>
-      <ViewersChart games={games} />
-      <ChannelChart games={games} />
+      {isLoading ? (
+        <Loader />
+      ) : (
+        <React.Fragment>
+          <ViewersChart games={games} />
+          <ChannelChart games={games} />
+        </React.Fragment>
+      )}
     </div>
   );
 };

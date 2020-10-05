@@ -4,7 +4,6 @@ import { jsx, Global, css } from "@emotion/core";
 
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchGames } from "../redux/actions";
 import { Card } from "./Card";
 import { cardsContainer, cardItem } from "../styles/GameList/gameList";
 import { GamesState, GameCardType } from "../inertfaces";

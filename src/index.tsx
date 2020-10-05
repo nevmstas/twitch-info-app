@@ -7,6 +7,12 @@ import { createStore, compose, applyMiddleware } from "redux";
 import thunk from "redux-thunk";
 import { Provider } from "react-redux";
 import { rootReducer } from "./redux/rootReducer";
+import sagaWatcher from "./redux/sagas";
+
+import createSagaMiddleware from "redux-saga";
+
+// create the saga middleware
+const sagaMiddleware = createSagaMiddleware();
 
 declare global {
   interface Window {
@@ -18,8 +24,11 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const store = createStore(
   rootReducer,
-  compose(applyMiddleware(thunk), composeEnhancers())
+  compose(applyMiddleware(sagaMiddleware), composeEnhancers())
 );
+
+// then run the saga
+sagaMiddleware.run(sagaWatcher);
 
 ReactDOM.render(
   <React.StrictMode>

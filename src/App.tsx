@@ -16,16 +16,17 @@ import { ChartStats } from "./components/ChartStats";
 import { Navigation } from "./components/navbar/Navigation";
 
 import { useDispatch, useSelector } from "react-redux";
-import { fetchGames } from "./redux/actions";
+//import { fetchGames } from "./redux/actions";
 
 import { RootState } from "./redux/rootReducer";
+import { FETCH_GAMES } from "./redux/types";
 
 function App() {
   const dispatch = useDispatch();
   const games = useSelector((state: RootState) => state.twitchGames.games);
 
   useEffect(() => {
-    dispatch(fetchGames());
+    dispatch({ type: FETCH_GAMES });
   }, []);
 
   return (

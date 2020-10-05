@@ -33,13 +33,14 @@ export const ChannelChart: React.FC<PropsTypes> = ({ games }) => {
   //const newData = [];
   useEffect(() => {
     const newArray = [];
-    for (let i = 0; i <= 5; i++) {
-      const obj = {
-        name: games[i].game.name,
-        channels: games[i].channels,
-      };
-      console.log(obj);
-      newArray.push(obj);
+    if (games.length >= 5) {
+      for (let i = 0; i <= 5; i++) {
+        const obj = {
+          name: games[i].game.name,
+          channels: games[i].channels,
+        };
+        newArray.push(obj);
+      }
     }
     setChartData(newArray);
   }, [games]);
