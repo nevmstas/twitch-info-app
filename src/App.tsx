@@ -1,47 +1,48 @@
 // this comment tells babel to convert jsx to calls to a function called jsx instead of React.createElement
 /** @jsx jsx */
-import { jsx, Global, css } from "@emotion/core";
-import React, { useEffect } from "react";
+import { jsx, Global } from "@emotion/core";
+import { useEffect } from "react";
 
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import "./App.css";
 
 import { global, page } from "./styles/base/base";
-import { header } from "./styles/layout/header";
 import { main } from "./styles/layout/main";
-
 import { GameList } from "./components/GameList";
 import { ChartStats } from "./components/ChartStats";
 import { Navigation } from "./components/navbar/Navigation";
-
-import { useDispatch, useSelector } from "react-redux";
-//import { fetchGames } from "./redux/actions";
-
+import { shallowEqual, useDispatch, useSelector } from "react-redux";
 import { RootState } from "./redux/rootReducer";
 import { FETCH_GAMES } from "./redux/types";
 
 function App() {
   const dispatch = useDispatch();
-  const games = useSelector((state: RootState) => state.twitchGames.games);
+  const { games } = useSelector(
+    (state: RootState) => state.twitchGames,
+    shallowEqual
+  );
+  const { isLoading } = useSelector(
+    (state: RootState) => state.app,
+    shallowEqual
+  );
 
   useEffect(() => {
     dispatch({ type: FETCH_GAMES });
-  }, []);
+  }, [dispatch]);
 
   return (
     <Router>
       <Global styles={global} />
-      {/* <header css={header}>Twitch info</header> */}
       <Navigation />
       <div css={page}>
         <main css={main}>
           <Switch>
             <Route path="/" exact component={GameList}>
-              <GameList games={games} />
+              <GameList games={games} isLoad={isLoading} />
             </Route>
             <Route path="/charts">
-              <ChartStats />
+              <ChartStats games={games} isLoad={isLoading} />
             </Route>
           </Switch>
         </main>

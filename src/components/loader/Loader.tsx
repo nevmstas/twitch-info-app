@@ -1,7 +1,6 @@
 // this comment tells babel to convert jsx to calls to a function called jsx instead of React.createElement
 /** @jsx jsx */
 import { jsx, css, keyframes } from "@emotion/core";
-import React from "react";
 
 const bounce = keyframes`
     0% {

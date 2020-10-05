@@ -1,8 +1,6 @@
 // this comment tells babel to convert jsx to calls to a function called jsx instead of React.createElement
 /** @jsx jsx */
 import { jsx, css } from "@emotion/core";
-import { twitchColor, lightTwitchColor } from "../styles/colors";
-
 import React from "react";
 
 export const cardItem = css`

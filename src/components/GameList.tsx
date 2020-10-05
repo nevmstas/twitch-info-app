@@ -1,21 +1,24 @@
 // this comment tells babel to convert jsx to calls to a function called jsx instead of React.createElement
 /** @jsx jsx */
-import { jsx, Global, css } from "@emotion/core";
+import { jsx } from "@emotion/core";
+import React from "react";
 
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
 import { Card } from "./Card";
 import { cardsContainer, cardItem } from "../styles/GameList/gameList";
-import { GamesState, GameCardType } from "../inertfaces";
-import { RootState } from "../redux/rootReducer";
+import { GameCardType } from "../inertfaces";
+import { Loader } from "./loader/Loader";
 
 type PropsTypes = {
   games: Array<GameCardType>;
+  isLoad: boolean;
 };
-export const GameList: React.FC<PropsTypes> = ({ games }) => {
+
+export const GameList: React.FC<PropsTypes> = ({ games, isLoad }) => {
   return (
     <div css={cardsContainer}>
-      {games &&
+      {isLoad ? (
+        <Loader />
+      ) : (
         games.map((g: GameCardType, index: number) => (
           <Card
             css={cardItem}
@@ -24,7 +27,8 @@ export const GameList: React.FC<PropsTypes> = ({ games }) => {
             viewers={g.viewers}
             name={g.game.name}
           />
-        ))}
+        ))
+      )}
     </div>
   );
 };

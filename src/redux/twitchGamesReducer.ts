@@ -1,4 +1,4 @@
-import { FETCH_GAMES, SET_GAMES } from "./types";
+import { SET_GAMES } from "./types";
 import { GamesState } from "../inertfaces";
 
 const initialState: GamesState = {

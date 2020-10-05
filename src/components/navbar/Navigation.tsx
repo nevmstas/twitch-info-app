@@ -1,7 +1,6 @@
 // this comment tells babel to convert jsx to calls to a function called jsx instead of React.createElement
 /** @jsx jsx */
-import { jsx, css } from "@emotion/core";
-import React from "react";
+import { jsx } from "@emotion/core";
 
 import { Link } from "react-router-dom";
 import { navigation } from "../../styles/layout/navigation";

@@ -1,5 +1,5 @@
 import { css } from "@emotion/core";
-import { lightTwitchColor, lightGray } from "../colors";
+import { lightGray } from "../colors";
 
 export const main = css`
   display: flex;

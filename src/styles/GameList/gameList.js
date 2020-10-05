@@ -1,5 +1,4 @@
 import { css } from "@emotion/core";
-import { darkGrey } from "../colors";
 
 export const cardsContainer = css`
   display: flex;

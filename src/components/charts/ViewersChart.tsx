@@ -1,12 +1,11 @@
 // this comment tells babel to convert jsx to calls to a function called jsx instead of React.createElement
 /** @jsx jsx */
-import { jsx, Global, css } from "@emotion/core";
+import { jsx } from "@emotion/core";
 import React, { useState, useEffect } from "react";
 
 import {
   BarChart,
   Bar,
-  Cell,
   XAxis,
   YAxis,
   CartesianGrid,
