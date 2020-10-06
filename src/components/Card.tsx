@@ -2,6 +2,7 @@
 /** @jsx jsx */
 import { jsx, css } from "@emotion/core";
 import React from "react";
+import { twitchColor } from "../styles/colors";
 
 export const cardItem = css`
   width: 280px;
@@ -10,6 +11,11 @@ export const cardItem = css`
   font-size: 2rem;
   margin: 2rem;
   text-align: center;
+  background-color: ${twitchColor};
+  transition: all 0.2s;
+  &:hover {
+    transform: scale(1.01);
+  }
 `;
 
 const cardImg = css`

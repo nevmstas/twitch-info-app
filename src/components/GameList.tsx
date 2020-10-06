@@ -1,8 +1,8 @@
 // this comment tells babel to convert jsx to calls to a function called jsx instead of React.createElement
 /** @jsx jsx */
 import { jsx } from "@emotion/core";
-import React from "react";
-
+import React, { useState } from "react";
+import Pagination from "@material-ui/lab/Pagination";
 import { Card } from "./Card";
 import { cardsContainer, cardItem } from "../styles/GameList/gameList";
 import { GameCardType } from "../inertfaces";
@@ -14,12 +14,20 @@ type PropsTypes = {
 };
 
 export const GameList: React.FC<PropsTypes> = ({ games, isLoad }) => {
+  //pagination
+  const [currentPage, setCurrentPage] = useState(1);
+  const [gamesPerPage, setGamesPerPage] = useState(8);
+
+  const indexOfLastBuyer = currentPage * gamesPerPage;
+  const indexOfFirstBuyer = indexOfLastBuyer - gamesPerPage;
+  const currentGames = games.slice(indexOfFirstBuyer, indexOfLastBuyer);
+
   return (
     <div css={cardsContainer}>
       {isLoad ? (
         <Loader />
       ) : (
-        games.map((g: GameCardType, index: number) => (
+        currentGames.map((g: GameCardType, index: number) => (
           <Card
             css={cardItem}
             key={index}
@@ -29,6 +37,12 @@ export const GameList: React.FC<PropsTypes> = ({ games, isLoad }) => {
           />
         ))
       )}
+
+      <Pagination
+        page={currentPage}
+        onChange={(e, newPage) => setCurrentPage(newPage)}
+        count={currentGames.length}
+      />
     </div>
   );
 };

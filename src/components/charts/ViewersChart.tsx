@@ -38,7 +38,6 @@ export const ViewersChart: React.FC<PropsTypes> = ({ games }) => {
           name: games[i].game.name,
           viewers: games[i].viewers,
         };
-        console.log(obj);
         newArray.push(obj);
       }
     }

@@ -7,7 +7,7 @@ export const navigation = css`
   background: ${twitchColor};
   flex-direction: column;
   list-style: none;
-  font-size: 5rem;
+  font-size: 2rem;
   align-items: top;
   width: 300px;
   height: 100%;
@@ -22,16 +22,19 @@ export const navigation = css`
   }
 
   a {
-    margin-left: 20px;
-    margin-top: 20px;
+    margin: 20px;
+    padding: 10px;
+    text-align: center;
     display: block;
     text-decoration: none;
+    background-color: #4d1d96;
+    border-radius: 5px;
     color: white;
+    text-transform: uppercase;
     transition: all 0.2s;
     &:hover {
-      /* color: ${lightTwitchColor}; */
-      transform: translateX(10px);
-      text-decoration-line: 1px;
+      background-color: #e2d4f7;
+      color: ${twitchColor};
     }
   }
 

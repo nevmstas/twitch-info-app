@@ -16,4 +16,8 @@ export default class ApiService {
       return e.response;
     }
   };
+
+  getGames = async () => {
+    return await this.getData("games/top?limit=100");
+  };
 }

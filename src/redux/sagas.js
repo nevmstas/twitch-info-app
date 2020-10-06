@@ -4,7 +4,7 @@ import {
   HIDE_LOADER,
   SET_GAMES,
 } from "../redux/types";
-import { all, put, takeLatest } from "redux-saga/effects";
+import { all, call, put, takeLatest } from "redux-saga/effects";
 import ApiService from "../services/api";
 
 const apiService = new ApiService();
@@ -12,7 +12,7 @@ const apiService = new ApiService();
 function* fetchGames(action) {
   try {
     yield put({ type: SHOW_LOADER });
-    const games = yield apiService.getData("games/top?limit=100");
+    const games = yield call(apiService.getGames);
     yield put({ type: SET_GAMES, payload: games.top });
     yield put({ type: HIDE_LOADER });
   } catch (e) {
